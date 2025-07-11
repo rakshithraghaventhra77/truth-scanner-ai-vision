@@ -5,6 +5,7 @@ import { ProductUrlInput } from './ProductUrlInput';
 import { ManualInput } from './ManualInput';
 import { LoadingAnimation } from './LoadingAnimation';
 import { ResultDisplay } from './ResultDisplay';
+import { GalaxyBackground } from './GalaxyBackground';
 import { Shield, Bot } from 'lucide-react';
 
 export interface AnalysisResult {
@@ -47,7 +48,8 @@ export const CounterfeitDetector = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20 p-6">
+    <div className="min-h-screen relative p-6">
+      <GalaxyBackground />
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
@@ -57,12 +59,24 @@ export const CounterfeitDetector = () => {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-ai rounded-full shadow-ai">
+            <motion.div 
+              className="p-3 bg-gradient-ai rounded-full shadow-ai"
+              whileHover={{ 
+                scale: 1.1, 
+                boxShadow: "0 0 30px hsl(217 91% 60% / 0.6)",
+                rotate: 360 
+              }}
+              transition={{ duration: 0.6 }}
+            >
               <Shield className="w-8 h-8 text-primary-foreground" />
-            </div>
-            <h1 className="text-4xl font-bold bg-gradient-ai bg-clip-text text-transparent">
+            </motion.div>
+            <motion.h1 
+              className="text-4xl font-bold bg-gradient-ai bg-clip-text text-transparent"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
               AI Counterfeit Detector
-            </h1>
+            </motion.h1>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Advanced AI-powered analysis to detect counterfeit products. Upload product details or paste a link to get started.
@@ -74,33 +88,38 @@ export const CounterfeitDetector = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          whileHover={{ y: -5 }}
         >
-          <Card className="shadow-ai border-border/50 bg-card/80 backdrop-blur-sm">
+          <Card className="shadow-ai border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-card-hover transition-all duration-500 hover:bg-card/90">
             <CardContent className="p-8">
               {!isAnalyzing && !result && (
                 <>
                   {/* Tab Selection */}
                   <div className="flex gap-2 mb-8 p-1 bg-muted rounded-lg">
-                    <button
+                    <motion.button
                       onClick={() => setActiveTab('url')}
                       className={`flex-1 py-3 px-4 rounded-md transition-all duration-200 font-medium ${
                         activeTab === 'url'
                           ? 'bg-primary text-primary-foreground shadow-sm'
                           : 'text-muted-foreground hover:text-foreground'
                       }`}
+                      whileHover={{ scale: 1.02, y: -1 }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       🔗 Product Link
-                    </button>
-                    <button
+                    </motion.button>
+                    <motion.button
                       onClick={() => setActiveTab('manual')}
                       className={`flex-1 py-3 px-4 rounded-md transition-all duration-200 font-medium ${
                         activeTab === 'manual'
                           ? 'bg-primary text-primary-foreground shadow-sm'
                           : 'text-muted-foreground hover:text-foreground'
                       }`}
+                      whileHover={{ scale: 1.02, y: -1 }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       📝 Manual Input
-                    </button>
+                    </motion.button>
                   </div>
 
                   {/* Input Forms */}

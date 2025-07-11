@@ -65,10 +65,23 @@ export const ManualInput: React.FC<ManualInputProps> = ({ onSubmit }) => {
       className="space-y-6"
     >
       <div className="text-center">
-        <div className="inline-flex items-center gap-2 p-4 bg-gradient-ai rounded-full mb-4 shadow-glow">
+        <motion.div 
+          className="inline-flex items-center gap-2 p-4 bg-gradient-ai rounded-full mb-4 shadow-glow"
+          whileHover={{ 
+            scale: 1.1, 
+            boxShadow: "0 0 50px hsl(217 91% 60% / 0.8)",
+            rotate: [0, -5, 5, 0] 
+          }}
+          transition={{ duration: 0.5 }}
+        >
           <Upload className="w-6 h-6 text-primary-foreground" />
-        </div>
-        <h3 className="text-xl font-semibold mb-2">Manual Product Analysis</h3>
+        </motion.div>
+        <motion.h3 
+          className="text-xl font-semibold mb-2"
+          whileHover={{ scale: 1.05 }}
+        >
+          Manual Product Analysis
+        </motion.h3>
         <p className="text-muted-foreground">
           Manually input product details for comprehensive authenticity analysis
         </p>

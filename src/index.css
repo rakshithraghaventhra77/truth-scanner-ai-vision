@@ -118,5 +118,133 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+
+  /* Galaxy Background */
+  .galaxy-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 35%, #0a0a0a 100%);
+  }
+
+  .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: moveStars linear infinite;
+  }
+
+  .star:nth-child(odd) {
+    animation-name: moveStarsOdd;
+  }
+
+  .star:nth-child(3n) {
+    background: #7dd3fc;
+    box-shadow: 0 0 6px #7dd3fc;
+  }
+
+  .star:nth-child(5n) {
+    background: #a78bfa;
+    box-shadow: 0 0 6px #a78bfa;
+  }
+
+  .star:nth-child(7n) {
+    background: #fb7185;
+    box-shadow: 0 0 6px #fb7185;
+  }
+
+  @keyframes moveStars {
+    0% {
+      transform: translateZ(-1000px) translateY(-100vh) scale(0.1);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateZ(0px) translateY(100vh) scale(2);
+      opacity: 0;
+    }
+  }
+
+  @keyframes moveStarsOdd {
+    0% {
+      transform: translateZ(-1000px) translateY(-100vh) translateX(-50px) scale(0.1);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateZ(0px) translateY(100vh) translateX(50px) scale(2);
+      opacity: 0;
+    }
+  }
+
+  /* Twinkling effect */
+  .twinkle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .twinkle::before,
+  .twinkle::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+  .twinkle::before {
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, white, transparent),
+      radial-gradient(2px 2px at 40px 70px, white, transparent),
+      radial-gradient(1px 1px at 90px 40px, white, transparent),
+      radial-gradient(1px 1px at 130px 80px, white, transparent),
+      radial-gradient(2px 2px at 160px 30px, white, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: twinkle 5s ease-in-out infinite alternate;
+  }
+
+  .twinkle::after {
+    background-image: 
+      radial-gradient(1px 1px at 40px 60px, white, transparent),
+      radial-gradient(1px 1px at 120px 10px, white, transparent),
+      radial-gradient(1px 1px at 170px 50px, white, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: twinkle 3s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
   }
 }

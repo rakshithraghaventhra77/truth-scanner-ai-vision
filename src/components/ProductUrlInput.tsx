@@ -55,10 +55,23 @@ export const ProductUrlInput: React.FC<ProductUrlInputProps> = ({ onSubmit }) =>
       className="space-y-6"
     >
       <div className="text-center">
-        <div className="inline-flex items-center gap-2 p-4 bg-gradient-ai rounded-full mb-4 shadow-glow">
+        <motion.div 
+          className="inline-flex items-center gap-2 p-4 bg-gradient-ai rounded-full mb-4 shadow-glow"
+          whileHover={{ 
+            scale: 1.1, 
+            boxShadow: "0 0 50px hsl(217 91% 60% / 0.8)",
+            rotate: [0, -5, 5, 0] 
+          }}
+          transition={{ duration: 0.5 }}
+        >
           <Link className="w-6 h-6 text-primary-foreground" />
-        </div>
-        <h3 className="text-xl font-semibold mb-2">Product Link Analysis</h3>
+        </motion.div>
+        <motion.h3 
+          className="text-xl font-semibold mb-2"
+          whileHover={{ scale: 1.05 }}
+        >
+          Product Link Analysis
+        </motion.h3>
         <p className="text-muted-foreground">
           Paste a product URL from any e-commerce platform for automatic analysis
         </p>
@@ -103,27 +116,51 @@ export const ProductUrlInput: React.FC<ProductUrlInputProps> = ({ onSubmit }) =>
       </form>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-        <div className="text-center p-4 bg-muted/50 rounded-lg">
+        <motion.div 
+          className="text-center p-4 bg-muted/50 rounded-lg border border-border/30"
+          whileHover={{ 
+            scale: 1.05, 
+            backgroundColor: "hsl(var(--muted) / 0.8)",
+            y: -5 
+          }}
+          transition={{ duration: 0.3 }}
+        >
           <div className="w-8 h-8 bg-ai-primary/20 rounded-full flex items-center justify-center mx-auto mb-2">
             <span className="text-ai-primary font-bold">1</span>
           </div>
           <p className="text-sm font-medium mb-1">Auto-Fetch</p>
           <p className="text-xs text-muted-foreground">Extract product details automatically</p>
-        </div>
-        <div className="text-center p-4 bg-muted/50 rounded-lg">
+        </motion.div>
+        <motion.div 
+          className="text-center p-4 bg-muted/50 rounded-lg border border-border/30"
+          whileHover={{ 
+            scale: 1.05, 
+            backgroundColor: "hsl(var(--muted) / 0.8)",
+            y: -5 
+          }}
+          transition={{ duration: 0.3, delay: 0.1 }}
+        >
           <div className="w-8 h-8 bg-ai-secondary/20 rounded-full flex items-center justify-center mx-auto mb-2">
             <span className="text-ai-secondary font-bold">2</span>
           </div>
           <p className="text-sm font-medium mb-1">AI Analysis</p>
           <p className="text-xs text-muted-foreground">Deep learning detection algorithms</p>
-        </div>
-        <div className="text-center p-4 bg-muted/50 rounded-lg">
+        </motion.div>
+        <motion.div 
+          className="text-center p-4 bg-muted/50 rounded-lg border border-border/30"
+          whileHover={{ 
+            scale: 1.05, 
+            backgroundColor: "hsl(var(--muted) / 0.8)",
+            y: -5 
+          }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+        >
           <div className="w-8 h-8 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-2">
             <span className="text-success font-bold">3</span>
           </div>
           <p className="text-sm font-medium mb-1">Results</p>
           <p className="text-xs text-muted-foreground">Comprehensive authenticity report</p>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
